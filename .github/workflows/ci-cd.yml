@@ -6,6 +6,10 @@ on:
   push:
     branches: [main]
 
+defaults:
+  run:
+    working-directory: my-app
+
 jobs:
   test:
     name: Test
@@ -46,6 +50,6 @@ jobs:
             type=sha,format=long
       - uses: docker/build-push-action@v6
         with:
-          context: .
+          context: my-app
           push: true
           tags: ${{ steps.meta.outputs.tags }}
