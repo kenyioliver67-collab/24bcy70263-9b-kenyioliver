@@ -7,6 +7,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
 RUN npm install
 COPY . .
+ENV NEXT_STATIC_EXPORT=true
 RUN npm run build
 
 # Stage 2: serve with Nginx
